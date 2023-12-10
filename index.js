@@ -3,12 +3,18 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
+const bodyParser = require('body-parser');
+
 
 app.use(express.json()); // Use express.json() middleware for parsing JSON data
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cors(
     {
         origin: ["https://mern-job-five.vercel.app"],
-        methods: ["POST", "GET"],
+        methods: ["POST", "GET", "DELETE", "PATCH"],
         credentials: true
     }
 ));
