@@ -5,7 +5,13 @@ require('dotenv').config();
 const port = process.env.PORT || 5000;
 
 app.use(express.json()); // Use express.json() middleware for parsing JSON data
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://mern-job-five.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.jhxvd7t.mongodb.net/?retryWrites=true&w=majority`;
@@ -97,13 +103,13 @@ async function run() {
         })
 
         //update
-        app.patch('/update-job/:id', async(req, res)=>{
+        app.patch('/update-job/:id', async (req, res) => {
             const id = req.params.id;
             const jobdata = req.body;
-            const filter = {_id: new ObjectId(id)};
-            const options = {upsert : true};
-            const updateDoc ={
-                $set:{
+            const filter = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
                     ...jobdata
                 },
             };
