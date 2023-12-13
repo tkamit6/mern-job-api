@@ -137,6 +137,12 @@ app.get('/', (req, res) => {
     res.send('Hello developer');
 });
 
+app.get('/', (req, res) => {
+    res.send('Hii');
+});
+
+
+
 app.listen(port, () => {
     console.log('listening on port ', port);
 });
