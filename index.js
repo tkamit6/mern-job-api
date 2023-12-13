@@ -137,7 +137,7 @@ app.get('/', (req, res) => {
     res.send('Hello developer');
 });
 
-app.get('/', (req, res) => {
+app.get('/hi', (req, res) => {
     res.send('Hii');
 });
 
