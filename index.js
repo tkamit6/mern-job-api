@@ -11,6 +11,7 @@ app.use(express.json()); // Use express.json() middleware for parsing JSON data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// app.use(cors())
 app.use(cors(
     {
         origin: ["https://mern-job-five.vercel.app"],
